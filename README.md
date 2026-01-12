@@ -15,3 +15,11 @@ The analysis was performed using Tableau, and the final output is an interactive
 - Category-wise revenue analysis
 - Data visualization and dashboard design
 - Business insights and storytelling
+
+## Tableau Dashboard
+
+View the interactive dashboard here: [Sales Analysis Dashboard](https://public.tableau.com/app/profile/maria.aslam/viz/Sales_17681494125720/SalesInsight)
+
+### Dashboard Screenshots
+![Sales Overview](Sales_Insight.png)
+![Top Categories](Top_3_Category_Role.png)
