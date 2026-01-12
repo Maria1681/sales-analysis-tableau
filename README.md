@@ -30,11 +30,9 @@ View the interactive dashboard here: [Sales Analysis Dashboard](https://public.t
 The SQL file included in this repository contains queries used for:
 - Data cleaning and preprocessing
 - Category-wise sales aggregation
-- Revenue calculations used in Tableau dashboards
-
-File: `sales_analysis.sql`
+- Revenue calculations used in Tableau dashboard
 
 
 
-File: ![Queries](sales_analysis.sql)
+File: ![Queries](sales_analysis.sql.txt)
 
