@@ -1,0 +1,60 @@
+/* Sales Price Simulation Analysis (2021–2022)
+   Author: Maria Aslam
+   Tool: Google BigQuery
+   Description:
+   - Applies price increase by category
+   - Compares original vs simulated revenue */
+
+WITH price_simulation AS (
+    SELECT
+        category,
+        invoice_date,
+        invoice_no,
+        total_sales AS original_sales,
+        CASE
+            WHEN category = 'Cosmetics' THEN total_sales * 1.25
+            WHEN category = 'Food & Beverage' THEN total_sales * 1.20
+            WHEN category = 'Toys' THEN total_sales * 1.25
+            ELSE total_sales
+        END AS simulated_sales
+
+    FROM `still-function-480108-v2.capstone1.sale`
+    WHERE DATE(invoice_date) BETWEEN '2021-01-01' AND '2022-12-31'
+)
+SELECT
+    SUM(original_sales) AS original_total_sales,
+    SUM(simulated_sales) AS simulated_total_sales,
+    SUM(simulated_sales) - SUM(original_sales) AS revenue_difference
+FROM price_simulation;
+
+
+--Filtering Dates
+
+CREATE OR REPLACE VIEW sales_of_two_years AS
+SELECT *
+FROM `still-function-480108-v2.capstone1.sale`
+WHERE invoice_date BETWEEN '2021-01-01' AND '2022-12-31';
+
+
+
+/*  Category Grouping for Analysis
+    Description:
+   - Groups key revenue-driving categories
+   - Remaining categories labeled as 'Others' */
+
+
+
+SELECT
+    t.*,
+
+    CASE
+        WHEN t.category IN ('Clothing', 'Shoes', 'Technology')
+            THEN t.category
+        ELSE 'Others'
+    END AS category_group
+
+FROM `still-function-480108-v2.capstone1.sales_of_two_years` AS t;
+
+
+
+
